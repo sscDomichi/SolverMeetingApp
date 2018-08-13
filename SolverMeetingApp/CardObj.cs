@@ -15,6 +15,7 @@ namespace SolverMeetingApp
         {
             Felica felica = new Felica();
 
+            // 読み込みループ
             while (true)
             {
                 try
