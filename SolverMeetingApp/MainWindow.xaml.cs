@@ -26,7 +26,15 @@ namespace SolverMeetingApp
             InitializeComponent();
 
             CardObj cardObj = new CardObj();
-            cardObj.ReadCard();
+            try
+            {
+                cardObj.ReadCard();
+            }
+            catch
+            {
+                MessageBox.Show("NFCリーダーをOpenできません", "Openエラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                Application.Current.Shutdown();
+            }
         }
     }
 }

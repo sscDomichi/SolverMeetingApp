@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SolverMeetingApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="SolverMeetingApp" Height="350" Width="525">
     <Grid>
-        
+        <Grid HorizontalAlignment="Left" Height="234" Margin="10,10,0,0" VerticalAlignment="Top" Width="419"/>
+        <Grid HorizontalAlignment="Left" Height="234" Margin="434,10,0,0" VerticalAlignment="Top" Width="73"/>
+        <Grid HorizontalAlignment="Left" Height="60" Margin="10,249,0,0" VerticalAlignment="Top" Width="497"/>
+
     </Grid>
 </Window>
