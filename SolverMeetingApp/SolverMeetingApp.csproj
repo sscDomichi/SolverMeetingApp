@@ -63,6 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AttendanceManager.cs" />
     <Compile Include="ReadTask.cs" />
     <Compile Include="FelicaLib.cs" />
     <Compile Include="MainWindow.xaml.cs">
