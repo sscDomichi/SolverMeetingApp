@@ -7,9 +7,9 @@ using FelicaLib;
 
 namespace SolverMeetingApp
 {
-    public class CardObj
+    public class ReadTask
     {
-        //private const time = 1000;
+        private const int oneSecond = 1000;
 
         /// <summary>
         /// カード読み込み処理
@@ -38,7 +38,7 @@ namespace SolverMeetingApp
                 {
                 }
 
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(oneSecond);
             }
         }
     }
