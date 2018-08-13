@@ -11,6 +11,9 @@ namespace SolverMeetingApp
     {
         //private const time = 1000;
 
+        /// <summary>
+        /// カード読み込み処理
+        /// </summary>
         public void ReadCard()
         {
             Felica felica = new Felica();
