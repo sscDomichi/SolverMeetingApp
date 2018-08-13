@@ -7,14 +7,29 @@ using FelicaLib;
 
 namespace SolverMeetingApp
 {
-    public class ReadTask
+    internal class ReadTask
     {
+        /// <summary>
+        /// 1秒をミリ秒で定義
+        /// </summary>
         private const int oneSecond = 1000;
+
+        /// <summary>
+        /// 非同期で読み取り処理を行う
+        /// </summary>
+        internal static void ReadTaskMain()
+        {
+            Task task = Task.Run(new Action(() =>
+            {
+                ReadTask cardObj = new ReadTask();
+                cardObj.ReadCard();
+            }));
+        }
 
         /// <summary>
         /// カード読み込み処理
         /// </summary>
-        public void ReadCard()
+        internal void ReadCard()
         {
             Felica felica = new Felica();
 
