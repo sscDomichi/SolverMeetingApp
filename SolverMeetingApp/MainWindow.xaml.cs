@@ -25,10 +25,9 @@ namespace SolverMeetingApp
         {
             InitializeComponent();
 
-            CardObj cardObj = new CardObj();
             try
             {
-                cardObj.ReadCard();
+                ReadTask.ReadTaskMain();
             }
             catch
             {
