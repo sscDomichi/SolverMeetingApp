@@ -25,15 +25,7 @@ namespace SolverMeetingApp
         {
             InitializeComponent();
 
-            try
-            {
-                ReadTask.ReadTaskMain();
-            }
-            catch
-            {
-                MessageBox.Show("NFCリーダーをOpenできません", "Openエラー", MessageBoxButton.OK, MessageBoxImage.Error);
-                Application.Current.Shutdown();
-            }
+            ReadTask.ReadTaskMain();
         }
     }
 }

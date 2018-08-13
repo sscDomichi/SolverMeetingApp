@@ -54,7 +54,8 @@ namespace SolverMeetingApp
                     {
                     }
 
-                System.Threading.Thread.Sleep(oneSecond);
+                    System.Threading.Thread.Sleep(oneSecond);
+                }
             }
         }
     }
