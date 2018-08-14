@@ -1,10 +1,13 @@
 ﻿namespace SolverMeetingApp
 {
-    class AttendanceManager
-    {
-        internal static void AttendanceManagerMain()
-        {
-            ReadTask.ReadTaskMain();
-        }
-    }
+	/// <summary>
+	/// 
+	/// </summary>
+	public class AttendanceManager
+	{
+		internal static void AttendanceManagerMain()
+		{
+			ReadTask.ReadTaskMain();
+		}
+	}
 }
