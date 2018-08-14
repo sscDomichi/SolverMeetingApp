@@ -20,8 +20,17 @@ namespace SolverMeetingApp
             Task task = Task.Run(new Action(() =>
             {
                 ReadTask cardObj = new ReadTask();
-                cardObj.ReadCard();
-            }));
+				try
+				{
+					cardObj.ReadCard();
+				}
+				catch
+				{
+					//読み取り失敗
+					MessageBox.Show("読み取り失敗");
+				}
+
+			}));
         }
 
         /// <summary>

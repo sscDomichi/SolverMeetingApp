@@ -7,7 +7,7 @@ namespace SolverMeetingApp
 	{
 		internal static void AttendanceManagerMain()
 		{
-
+			ReadTask.ReadTaskMain();
 		}
 	}
 }
