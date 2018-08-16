@@ -64,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AttendanceManager.cs" />
+    <Compile Include="DummyRead.cs" />
     <Compile Include="ReadTask.cs" />
     <Compile Include="FelicaLib.cs" />
     <Compile Include="MainWindow.xaml.cs">
