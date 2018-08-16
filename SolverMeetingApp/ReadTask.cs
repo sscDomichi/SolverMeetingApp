@@ -46,14 +46,13 @@ namespace SolverMeetingApp
         /// <summary>
         /// 非同期で読み取り処理を行う
         /// </summary>
-        internal static void ReadTaskMain()
+        internal void ReadTaskMain()
         {
             Task task = Task.Run(new Action(() =>
             {
-                ReadTask readTask = new ReadTask();
 				try
 				{
-                    readTask.ReadCard();
+                    ReadCard();
 				}
 				catch
 				{
@@ -85,7 +84,7 @@ namespace SolverMeetingApp
                             dataStr += idm[i].ToString("X2");
                         }
 
-                        //ReadCompleteNotify(ReadStatus.COMPLETE, dataStr);
+                        ReadCompleteNotify(ReadStatus.COMPLETE, dataStr);
                         //Console.Write("{0}\r\n", dataStr);
 
                         Console.Write("IDm: ");
@@ -97,7 +96,7 @@ namespace SolverMeetingApp
                     }
                     catch
                     {
-                        //ReadCompleteNotify(ReadStatus.NO_READ, null);
+                        ReadCompleteNotify(ReadStatus.NO_READ, null);
                     }
 
                     System.Threading.Thread.Sleep(oneSecond);
