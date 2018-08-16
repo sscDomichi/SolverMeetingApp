@@ -90,6 +90,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="doc\01_要求仕様_全体会議アプリ.docx" />
+    <None Include="doc\05_機能仕様書.docx" />
     <None Include="doc\10_設計書.asta" />
     <None Include="doc\99_環境構築手順書.docx" />
     <None Include="Properties\Settings.settings">
