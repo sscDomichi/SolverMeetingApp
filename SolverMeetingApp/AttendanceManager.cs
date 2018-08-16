@@ -7,7 +7,8 @@
 	{
 		internal static void AttendanceManagerMain()
 		{
-			ReadTask.ReadTaskMain();
+			//ReadTask.CallBack callBack =
+            ReadTask.ReadTaskMain();
 		}
 	}
 }
