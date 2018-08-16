@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="SolverMeetingApp.AttendanceControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SolverMeetingApp"
+             mc:Ignorable="d">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="NameText" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="氏名" VerticalAlignment="Top" Width="178"/>
+            <Button x:Name="AttendanceButton" Content="出席" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Button x:Name="TardyButton" Content="遅刻" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Button x:Name="AbsenceButton" Content="欠席" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBlock x:Name="TimeText" HorizontalAlignment="Left" TextWrapping="Wrap" Text="時刻" VerticalAlignment="Top"/>
+            <TextBlock x:Name="RemarksText" HorizontalAlignment="Left" TextWrapping="Wrap" Text="備考" VerticalAlignment="Top"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

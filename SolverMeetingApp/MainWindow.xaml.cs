@@ -17,10 +17,28 @@ namespace SolverMeetingApp
             attendanceMan = new AttendanceManager();
             attendanceMan.AttendanceManagerMain();
 
+			//ダミーモード準備
 			StartDummyMode();
 
-        }
+			InitAttendancePanel();
+		}
 
+		/// <summary>
+		/// 従業員出欠パネルの初期化
+		/// </summary>
+		private void InitAttendancePanel()
+		{
+			//TODO:ファイルか何かから読み込んで、人数分作成する。
+			for (int i = 0; i < 5; i++)
+			{
+				AttendanceControl attdCtrl = new AttendanceControl();
+				AttendanceStackPanel.Children.Add(attdCtrl);
+			}
+		}
+
+		/// <summary>
+		/// ダミーモード用ファイルがあれば、カードリーダダミーモード開始
+		/// </summary>
 		private void StartDummyMode()
 		{
 			try
