@@ -13,5 +13,15 @@ namespace SolverMeetingApp
 
             AttendanceManager.AttendanceManagerMain();
         }
-    }
+
+		/// <summary>
+		/// Dummyカード読み取りボタン
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void DummyReadButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+	}
 }
