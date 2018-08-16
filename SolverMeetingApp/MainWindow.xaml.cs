@@ -7,11 +7,14 @@ namespace SolverMeetingApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        AttendanceManager attendanceMan = null;
         public MainWindow()
         {
             InitializeComponent();
 
-            AttendanceManager.AttendanceManagerMain();
+            attendanceMan = new AttendanceManager();
+            attendanceMan.AttendanceManagerMain();
+
         }
 
 		/// <summary>
