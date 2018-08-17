@@ -59,7 +59,7 @@ namespace SolverMeetingApp
 				catch
 				{
 					//読み取り失敗
-					MessageBox.Show("読み取り失敗");
+					MessageBox.Show("読み取り異常");
 				}
 
 			}));

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SolverMeetingApp.data;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace SolverMeetingApp
     class DataManager
     {
         readonly private string REGISTER_CARD_INFO_FILE_PATH = @".\REGISTER_CARD_INFO.txt";
+		private Member member = new Member();
 
         /// <summary>
         /// カード登録情報

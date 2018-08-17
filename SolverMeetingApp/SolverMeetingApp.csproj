@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="AttendanceManager.cs" />
     <Compile Include="DataManager.cs" />
+    <Compile Include="data\Member.cs" />
     <Compile Include="DummyRead.cs" />
     <Compile Include="ReadTask.cs" />
     <Compile Include="FelicaLib.cs" />
