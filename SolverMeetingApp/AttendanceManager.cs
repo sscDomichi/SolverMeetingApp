@@ -18,7 +18,7 @@ namespace SolverMeetingApp
         internal void AttendanceManagerMain()
 		{
             DataManager dataMng = new DataManager();
-            dataMng.OpenRegistetCardInfoFile();
+            DataManager.RegisterCardInfo[] readData = dataMng.GetRegisterCardInfo();
 
             ReadTask readTask = new ReadTask();
             readTask.RegisterReadComplete(ReadComplete);
