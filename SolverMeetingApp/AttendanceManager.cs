@@ -1,4 +1,7 @@
-﻿using System;
+﻿
+using System;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace SolverMeetingApp
 {
@@ -14,6 +17,9 @@ namespace SolverMeetingApp
 
         internal void AttendanceManagerMain()
 		{
+            DataManager dataMng = new DataManager();
+            dataMng.OpenRegistetCardInfoFile();
+
             ReadTask readTask = new ReadTask();
             readTask.RegisterReadComplete(ReadComplete);
             readTask.ReadTaskMain();
@@ -26,7 +32,7 @@ namespace SolverMeetingApp
         /// <param name="idm"></param>
         internal void ReadComplete(ReadTask.ReadStatus status, string idm)
         {
-            Console.Write("{0}\r\n", idm);
+            Console.WriteLine(MethodBase.GetCurrentMethod().Name + ", IDm(" + idm + ")");
         }
     }
 }

@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using FelicaLib;
 using System.Windows;
 using System.Text;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace SolverMeetingApp
 {
@@ -77,7 +79,7 @@ namespace SolverMeetingApp
                     {
                         felica.Polling((int)SystemCode.Any);
 
-                        String dataStr = String.Empty;
+                        string dataStr = string.Empty;
                         byte[] idm = felica.IDm();
                         for (int i = 0; i < idm.Length; i++)
                         {
@@ -85,14 +87,7 @@ namespace SolverMeetingApp
                         }
 
                         ReadCompleteNotify(ReadStatus.COMPLETE, dataStr);
-                        //Console.Write("{0}\r\n", dataStr);
-
-                        Console.Write("IDm: ");
-                        foreach (var b in idm)
-                        {
-                            Console.Write(string.Format("{0:X2}", b));
-                        }
-                        Console.Write("\r\n");
+                        //Console.WriteLine(MethodBase.GetCurrentMethod().Name + ", IDm(" + idm + ")");
                     }
                     catch
                     {
