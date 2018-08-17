@@ -29,11 +29,16 @@ namespace SolverMeetingApp
             internal string name { get; set; }
         }
 
-        /// <summary>
-        /// カード登録情報をファイルから読み込み
-        /// </summary>
-        /// <returns></returns>
-        private byte[] OpenReadRegistetCardInfoFile()
+		internal List<string> GetDisplayMember()
+		{
+			return member.MemberDisplayList;
+		}
+
+		/// <summary>
+		/// カード登録情報をファイルから読み込み
+		/// </summary>
+		/// <returns></returns>
+		private byte[] OpenReadRegistetCardInfoFile()
         {
             byte[] readData = new byte[1024];
 

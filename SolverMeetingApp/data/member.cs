@@ -26,12 +26,12 @@ namespace SolverMeetingApp.data
 		/// <summary>
 		/// 表示メンバー一覧
 		/// </summary>
-		List<string> memberDisplayList = new List<string>();
+		internal List<string> MemberDisplayList { get; private set; } = new List<string>();
 
 		/// <summary>
 		/// 非表示メンバー一覧
 		/// </summary>
-		List<string> memberNonDispList = new List<string>();
+		internal List<string> MemberNonDispList { get; private set; } = new List<string>();
 
 
 		internal Member()
@@ -44,10 +44,12 @@ namespace SolverMeetingApp.data
 			catch (MemberListFileException memListExp)
 			{
 				MessageBox.Show(memListExp.Message);
+				throw;
 			}
 			catch
 			{
 				MessageBox.Show("メンバーリスト異常\ndataフォルダのnmember.csvファイルを確認してください。");
+				throw;
 			}
 		}
 
@@ -97,12 +99,12 @@ namespace SolverMeetingApp.data
 				if (Convert.ToBoolean(int.Parse(lines[0])))
 				{
 					//表示メンバーへ追加
-					memberDisplayList.Add(lines[1]);
+					MemberDisplayList.Add(lines[1]);
 				}
 				else
 				{
 					//非表示メンバーへ追加
-					memberNonDispList.Add(lines[1]);
+					MemberNonDispList.Add(lines[1]);
 				}
 
 			}
@@ -118,12 +120,12 @@ namespace SolverMeetingApp.data
 		private void dump()
 		{
 			Console.WriteLine("====表示メンバー出力");
-			foreach (string name in memberDisplayList)
+			foreach (string name in MemberDisplayList)
 			{
 				Console.WriteLine(name);
 			}
 			Console.WriteLine("====非表示メンバー出力");
-			foreach (string name in memberNonDispList)
+			foreach (string name in MemberNonDispList)
 			{
 				Console.WriteLine(name);
 			}

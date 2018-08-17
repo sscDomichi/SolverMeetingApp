@@ -10,15 +10,16 @@ namespace SolverMeetingApp
 	/// </summary>
 	internal class AttendanceManager
 	{
-        internal AttendanceManager()
-        {
+		DataManager dataManager;
 
-        }
+		internal AttendanceManager(DataManager dataMng)
+        {
+			dataManager = dataMng;
+		}
 
         internal void AttendanceManagerMain()
 		{
-            DataManager dataMng = new DataManager();
-            DataManager.RegisterCardInfo[] readData = dataMng.GetRegisterCardInfo();
+            DataManager.RegisterCardInfo[] readData = dataManager.GetRegisterCardInfo();
 
             ReadTask readTask = new ReadTask();
             readTask.RegisterReadComplete(ReadComplete);

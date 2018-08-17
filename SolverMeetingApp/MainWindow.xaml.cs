@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SolverMeetingApp.data;
+using System;
+using System.Collections.Generic;
 using System.Windows;
 using static SolverMeetingApp.ReadTask;
 
@@ -10,11 +12,16 @@ namespace SolverMeetingApp
     public partial class MainWindow : Window
     {
         AttendanceManager attendanceMan = null;
-        public MainWindow()
+		DataManager dataMng;
+
+
+		public MainWindow()
         {
             InitializeComponent();
 
-            attendanceMan = new AttendanceManager();
+			dataMng = new DataManager();
+
+			attendanceMan = new AttendanceManager(dataMng);
             attendanceMan.AttendanceManagerMain();
 
 			//ダミーモード準備
@@ -28,13 +35,17 @@ namespace SolverMeetingApp
 		/// </summary>
 		private void InitAttendancePanel()
 		{
-			//TODO:ファイルか何かから読み込んで、人数分作成する。
-			for (int i = 0; i < 5; i++)
+			//DataManager経由で表示メンバーを取得し、
+			List<string> memberList = dataMng.GetDisplayMember();
+
+			//人数分のコントロールを作成する。
+			foreach (string member in memberList)
 			{
 				AttendanceControl attdCtrl = new AttendanceControl();
+				attdCtrl.NameText.Text = member;
 				AttendanceStackPanel.Children.Add(attdCtrl);
 			}
-		}
+	}
 
 		/// <summary>
 		/// ダミーモード用ファイルがあれば、カードリーダダミーモード開始
