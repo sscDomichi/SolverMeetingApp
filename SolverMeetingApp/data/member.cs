@@ -48,7 +48,7 @@ namespace SolverMeetingApp.data
 			}
 			catch
 			{
-				MessageBox.Show("メンバーリスト異常\ndataフォルダのnmember.csvファイルを確認してください。");
+				MessageBox.Show("メンバーリスト異常\ndataフォルダのmember.csvファイルを確認してください。");
 				throw;
 			}
 		}
