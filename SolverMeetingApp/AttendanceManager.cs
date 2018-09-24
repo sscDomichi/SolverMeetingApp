@@ -4,6 +4,7 @@ using System;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
+using static SolverMeetingApp.AttendanceStatus;
 
 namespace SolverMeetingApp
 {
@@ -19,7 +20,8 @@ namespace SolverMeetingApp
 		/// </summary>
 		/// <param name="status"></param>
 		/// <param name="idm"></param>
-		internal delegate void ChangeState(string name);//TODO:引数をAttendanceStatusに変える
+		internal delegate void ChangeState(AttendanceStatusInfo status);
+
 		private ChangeState ChangeStateNotify;
 
 		internal AttendanceManager(DataManager dataMng)
@@ -55,7 +57,8 @@ namespace SolverMeetingApp
                 //Console.WriteLine(MethodBase.GetCurrentMethod().Name + ", IDm(" + idm + ")");
 
                 dataManager.FindIdmFromRegisterCardInfo(idm);
-				ChangeStateNotify(idm);//TODO:AttendanceStatusを引数に変更する。
+				AttendanceStatusInfo info = new AttendanceStatusInfo();
+				ChangeStateNotify(info);//TODO:実際のAttendanceStatusを引数に変更する。
 			}
             catch (MemberListFileException e)
             {
