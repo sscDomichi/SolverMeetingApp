@@ -12,8 +12,6 @@ namespace SolverMeetingApp
     class DataManager
     {
         readonly private string REGISTER_CARD_INFO_FILE_PATH = @".\data\REGISTER_CARD_INFO.csv";
-		private Member member = new Member();
-        RegisterCardInfo[] registerCardInfo = null;
 
         /// <summary>
         /// カード登録情報
@@ -30,6 +28,13 @@ namespace SolverMeetingApp
             internal string name { get; set; }
         }
 
+        private Member member = new Member();
+        private AttendanceStatus attendanceStatus = null;
+        RegisterCardInfo[] registerCardInfo = null;
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         internal DataManager()
         {
             byte[] readData = OpenReadRegistetCardInfoFile();
@@ -62,18 +67,33 @@ namespace SolverMeetingApp
                 //Console.WriteLine(MethodBase.GetCurrentMethod().Name + " idm(" + registerCardInfo[i].idm + ")");
                 //Console.WriteLine(MethodBase.GetCurrentMethod().Name + " name(" + registerCardInfo[i].name + ")");
             }
+
+            attendanceStatus = new AttendanceStatus(GetAllMemberName());
         }
 
+        /// <summary>
+        /// 表示設定のメンバーのみを取得
+        /// </summary>
+        /// <returns></returns>
         internal List<string> GetDisplayMember()
 		{
 			return member.MemberDisplayList;
 		}
 
-		/// <summary>
-		/// カード登録情報をファイルから読み込み
-		/// </summary>
-		/// <returns></returns>
-		private byte[] OpenReadRegistetCardInfoFile()
+        /// <summary>
+        /// 全メンバーの名前を取得
+        /// </summary>
+        /// <returns></returns>
+        internal List<string> GetAllMemberName()
+        {
+            return member.AllMemberList;
+        }
+
+        /// <summary>
+        /// カード登録情報をファイルから読み込み
+        /// </summary>
+        /// <returns></returns>
+        private byte[] OpenReadRegistetCardInfoFile()
         {
             byte[] readData = new byte[1024];
 
@@ -94,7 +114,7 @@ namespace SolverMeetingApp
         }
 
         /// <summary>
-        /// カード登録情報構造体へデータを代入
+        /// カード登録情報を取得
         /// </summary>
         /// <returns></returns>
         internal RegisterCardInfo[] GetRegisterCardInfo()
@@ -102,6 +122,11 @@ namespace SolverMeetingApp
             return registerCardInfo;
         }
 
+        /// <summary>
+        /// カード登録情報から指定したidmと一致するものを検索
+        /// </summary>
+        /// <param name="idm"></param>
+        /// <returns></returns>
         internal string FindIdmFromRegisterCardInfo(string idm)
         {
             for (int i = 0; i < registerCardInfo.Length; i++)
