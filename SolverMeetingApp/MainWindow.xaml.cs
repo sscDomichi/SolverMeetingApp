@@ -62,13 +62,21 @@ namespace SolverMeetingApp
 					{
 						case Status.ATTENDANCE:
 							ctrl.AttendanceButton.Background = Brushes.Green;
+							ctrl.AbsenceButton.Background = Brushes.Gray;
+							ctrl.TardyButton.Background = Brushes.Gray;
 							break;
 						case Status.ABSENCE:
+							ctrl.AttendanceButton.Background = Brushes.Gray;
 							ctrl.AbsenceButton.Background = Brushes.Green;
+							ctrl.TardyButton.Background = Brushes.Gray;
 							break;
 						case Status.ARRIVINGlLATE:
+							ctrl.AttendanceButton.Background = Brushes.Gray;
+							ctrl.AbsenceButton.Background = Brushes.Gray;
 							ctrl.TardyButton.Background = Brushes.Green;
 							break;
+						default:
+							throw new Exception("出勤ステータス異常");
 					}
 
 				}
