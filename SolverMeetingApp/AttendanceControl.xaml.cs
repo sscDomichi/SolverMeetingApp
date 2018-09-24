@@ -24,5 +24,15 @@ namespace SolverMeetingApp
 		{
 			InitializeComponent();
 		}
+
+		/// <summary>
+		/// 出席ボタン押下
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void AttendanceButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }

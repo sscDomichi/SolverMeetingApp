@@ -8,7 +8,7 @@
     <Grid>
         <StackPanel Orientation="Horizontal">
             <TextBlock x:Name="NameText" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="氏名" VerticalAlignment="Top" Width="178"/>
-            <Button x:Name="AttendanceButton" Content="出席" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Button x:Name="AttendanceButton" Content="出席" HorizontalAlignment="Left" VerticalAlignment="Top" Click="AttendanceButton_Click"/>
             <Button x:Name="TardyButton" Content="遅刻" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Button x:Name="AbsenceButton" Content="欠席" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <TextBlock x:Name="TimeText" HorizontalAlignment="Left" TextWrapping="Wrap" Text="時刻" VerticalAlignment="Top"/>

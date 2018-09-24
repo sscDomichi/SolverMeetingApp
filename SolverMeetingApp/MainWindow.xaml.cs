@@ -45,7 +45,11 @@ namespace SolverMeetingApp
 			//表示を更新する
 			Console.WriteLine("ChangeStateNotify() name:" + status.name);
 
-			UpdateAttendance(status);
+			this.Dispatcher.BeginInvoke(
+				 new Action(() => {
+					 UpdateAttendance(status);
+				 })
+			);
 		}
 
 		/// <summary>
