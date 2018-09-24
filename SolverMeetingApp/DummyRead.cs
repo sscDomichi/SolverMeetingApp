@@ -8,7 +8,7 @@ namespace SolverMeetingApp
 {
 	class DummyRead
 	{
-		readonly private string NO_READER_MODE_FILE = @".\NO_READER.txt";
+		readonly private string NO_READER_MODE_FILE = @".\data\NO_READER.txt";
 
 		System.IO.StreamReader file = null;
 		internal DummyRead()
