@@ -91,7 +91,7 @@ namespace SolverMeetingApp
                     }
                     catch
                     {
-                        ReadCompleteNotify(ReadStatus.NO_READ, null);
+                        //ReadCompleteNotify(ReadStatus.NO_READ, null);
                     }
 
                     System.Threading.Thread.Sleep(oneSecond);

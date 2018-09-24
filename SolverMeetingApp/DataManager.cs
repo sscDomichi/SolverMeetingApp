@@ -11,7 +11,7 @@ namespace SolverMeetingApp
 {
     class DataManager
     {
-        readonly private string REGISTER_CARD_INFO_FILE_PATH = @".\REGISTER_CARD_INFO.txt";
+        readonly private string REGISTER_CARD_INFO_FILE_PATH = @".\data\REGISTER_CARD_INFO.txt";
 		private Member member = new Member();
 
         /// <summary>
@@ -91,8 +91,8 @@ namespace SolverMeetingApp
                     dataCount++;
                 }
 
-                Console.WriteLine(MethodBase.GetCurrentMethod().Name + " idm(" + registerCardInfo[i].idm + ")");
-                Console.WriteLine(MethodBase.GetCurrentMethod().Name + " name(" + registerCardInfo[i].name + ")");
+                //Console.WriteLine(MethodBase.GetCurrentMethod().Name + " idm(" + registerCardInfo[i].idm + ")");
+                //Console.WriteLine(MethodBase.GetCurrentMethod().Name + " name(" + registerCardInfo[i].name + ")");
             }
 
             return registerCardInfo;

@@ -31,14 +31,18 @@ namespace SolverMeetingApp
         /// <param name="idm"></param>
         internal void ReadComplete(ReadTask.ReadStatus status, string idm)
         {
-            Console.WriteLine(MethodBase.GetCurrentMethod().Name + ", IDm(" + idm + ")");
+            //Console.WriteLine(MethodBase.GetCurrentMethod().Name + ", IDm(" + idm + ")");
 
             DataManager.RegisterCardInfo[] readData = dataManager.GetRegisterCardInfo();
             for ( int i = 0; i < readData.Length; i++)
             {
                 if (readData[i].idm == idm)
                 {
-                    Console.WriteLine("登録済データ");
+                    Console.WriteLine("登録済データ " + readData[i].name);
+                }
+                else
+                {
+                    Console.WriteLine("非登録 " + idm);
                 }
             }
         }
