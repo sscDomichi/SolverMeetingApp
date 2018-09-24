@@ -12,7 +12,7 @@ namespace SolverMeetingApp
     public partial class MainWindow : Window
     {
         AttendanceManager attendanceMan = null;
-		DataManager dataMng;
+		DataManager dataMng = null;
 
 
 		public MainWindow()
@@ -22,12 +22,26 @@ namespace SolverMeetingApp
 			dataMng = new DataManager();
 
 			attendanceMan = new AttendanceManager(dataMng);
-            attendanceMan.AttendanceManagerMain();
+			//通知登録
+			attendanceMan.RegisterChangeStateNotify(ChangeStateNotify);
+			//動作開始
+			attendanceMan.AttendanceManagerMain();
 
 			//ダミーモード準備
 			StartDummyMode();
 
 			InitAttendancePanel();
+		}
+
+		/// <summary>
+		/// ステータス変更通知受信
+		/// 変更された情報をもとに、表示を変更する
+		/// </summary>
+		/// <param name="name"></param>
+		void ChangeStateNotify(string name)
+		{
+			//表示を更新する
+			Console.WriteLine("ChangeStateNotify() name " + name);
 		}
 
 		/// <summary>

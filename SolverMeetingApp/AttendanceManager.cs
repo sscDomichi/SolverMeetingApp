@@ -14,6 +14,14 @@ namespace SolverMeetingApp
 	{
 		DataManager dataManager;
 
+		/// <summary>
+		/// ステータス変更状態通知
+		/// </summary>
+		/// <param name="status"></param>
+		/// <param name="idm"></param>
+		internal delegate void ChangeState(string name);//TODO:引数をAttendanceStatusに変える
+		private ChangeState ChangeStateNotify;
+
 		internal AttendanceManager(DataManager dataMng)
         {
 			dataManager = dataMng;
@@ -26,19 +34,29 @@ namespace SolverMeetingApp
             readTask.ReadTaskMain();
 		}
 
-        /// <summary>
-        /// NFC読み取り通知受信(delegate通知)
-        /// </summary>
-        /// <param name="status"></param>
-        /// <param name="idm"></param>
-        internal void ReadComplete(ReadTask.ReadStatus status, string idm)
+		/// <summary>
+		/// ステータス変更通知(delegate)登録
+		/// </summary>
+		/// <param name="func"></param>
+		internal void RegisterChangeStateNotify(ChangeState func)
+		{
+			ChangeStateNotify += func;
+		}
+
+		/// <summary>
+		/// NFC読み取り通知受信(delegate通知)
+		/// </summary>
+		/// <param name="status"></param>
+		/// <param name="idm"></param>
+		internal void ReadComplete(ReadTask.ReadStatus status, string idm)
         {
             try
             {
                 //Console.WriteLine(MethodBase.GetCurrentMethod().Name + ", IDm(" + idm + ")");
 
                 dataManager.FindIdmFromRegisterCardInfo(idm);
-            }
+				ChangeStateNotify(idm);//TODO:AttendanceStatusを引数に変更する。
+			}
             catch (MemberListFileException e)
             {
                 MessageBox.Show("登録されていないカードです");
