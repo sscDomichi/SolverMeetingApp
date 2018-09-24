@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SolverMeetingApp
 {
-    class AttendanceStatus
+    internal class AttendanceStatus
     {
         /// <summary>
         /// 出欠状態
@@ -28,7 +28,7 @@ namespace SolverMeetingApp
         }
 
         /// <summary>
-        /// 出欠状態情報
+        /// 出欠情報
         /// </summary>
         internal struct AttendanceStatusInfo
         {
@@ -55,5 +55,18 @@ namespace SolverMeetingApp
 
         internal List<AttendanceStatusInfo> attendanceStatusInfo = new List<AttendanceStatusInfo>();
 
+        internal AttendanceStatus(List<string> names)
+        {
+            foreach (string name in names)
+            {
+                AttendanceStatusInfo addData = new AttendanceStatusInfo();
+                addData.name = name;
+                addData.status = Status.ABSENCE;
+                addData.arrivalTime = DateTime.MinValue;
+                addData.remarksColumn = "";
+
+                attendanceStatusInfo.Add(addData);
+            }
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace SolverMeetingApp
 		internal AttendanceManager(DataManager dataMng)
         {
 			dataManager = dataMng;
-		}
+        }
 
         internal void AttendanceManagerMain()
 		{

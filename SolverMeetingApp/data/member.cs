@@ -33,8 +33,12 @@ namespace SolverMeetingApp.data
 		/// </summary>
 		internal List<string> MemberNonDispList { get; private set; } = new List<string>();
 
+        /// <summary>
+        /// 全メンバー一覧
+        /// </summary>
+        internal List<string> AllMemberList { get; private set; } = new List<string>();
 
-		internal Member()
+        internal Member()
 		{
 			try
 			{
@@ -95,8 +99,10 @@ namespace SolverMeetingApp.data
 
 			try
 			{
-				//表示種別判定
-				if (Convert.ToBoolean(int.Parse(lines[0])))
+                AllMemberList.Add(lines[1]);
+
+                //表示種別判定
+                if (Convert.ToBoolean(int.Parse(lines[0])))
 				{
 					//表示メンバーへ追加
 					MemberDisplayList.Add(lines[1]);
