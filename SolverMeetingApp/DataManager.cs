@@ -13,6 +13,7 @@ namespace SolverMeetingApp
     {
         readonly private string REGISTER_CARD_INFO_FILE_PATH = @".\data\REGISTER_CARD_INFO.csv";
 		private Member member = new Member();
+        RegisterCardInfo[] registerCardInfo = null;
 
         /// <summary>
         /// カード登録情報
@@ -29,7 +30,41 @@ namespace SolverMeetingApp
             internal string name { get; set; }
         }
 
-		internal List<string> GetDisplayMember()
+        internal DataManager()
+        {
+            byte[] readData = OpenReadRegistetCardInfoFile();
+
+            // 読み込んだデータを文字列へ変換し、不要なデータ(\0)を削除
+            string strData = string.Empty;
+            strData += Encoding.GetEncoding("Shift_JIS").GetString(readData);
+            strData = strData.TrimEnd('\0');
+            //Console.WriteLine(strData);
+
+            // カンマ、改行を区切り文字とし、データを分ける
+            string[] splitWord = { ",", "\r\n" };
+            string[] splitData = strData.Split(splitWord, StringSplitOptions.RemoveEmptyEntries);
+
+            // カード登録情報構造体へデータを代入
+            int oneDataNum = splitData.Count() / 2;
+            registerCardInfo = new RegisterCardInfo[oneDataNum];
+
+            int dataCount = 0;
+            for (int i = 0; i < oneDataNum; i++)
+            {
+                if (dataCount < splitData.Count())
+                {
+                    registerCardInfo[i].idm = splitData[dataCount];
+                    dataCount++;
+                    registerCardInfo[i].name = splitData[dataCount];
+                    dataCount++;
+                }
+
+                //Console.WriteLine(MethodBase.GetCurrentMethod().Name + " idm(" + registerCardInfo[i].idm + ")");
+                //Console.WriteLine(MethodBase.GetCurrentMethod().Name + " name(" + registerCardInfo[i].name + ")");
+            }
+        }
+
+        internal List<string> GetDisplayMember()
 		{
 			return member.MemberDisplayList;
 		}
@@ -64,39 +99,22 @@ namespace SolverMeetingApp
         /// <returns></returns>
         internal RegisterCardInfo[] GetRegisterCardInfo()
         {
-            byte[] readData = OpenReadRegistetCardInfoFile();
-
-            // 読み込んだデータを文字列へ変換し、不要なデータ(\0)を削除
-            string strData = string.Empty;
-            strData += Encoding.GetEncoding("Shift_JIS").GetString(readData);
-            strData = strData.TrimEnd('\0');
-            //Console.WriteLine(strData);
-
-            // カンマ、改行を区切り文字とし、データを分ける
-            string[] splitWord = { ",", "\r\n" };
-            string[] splitData = strData.Split(splitWord, StringSplitOptions.RemoveEmptyEntries);
-
-            // カード登録情報構造体へデータを代入
-            int oneDataNum = splitData.Count() / 2;
-            RegisterCardInfo[] registerCardInfo = new RegisterCardInfo[oneDataNum];
-
-            int dataCount = 0;
-            for (int i = 0; i < oneDataNum; i++)
-            {
-                if (dataCount < splitData.Count())
-                {
-                    registerCardInfo[i].idm = splitData[dataCount];
-                    dataCount++;
-                    registerCardInfo[i].name = splitData[dataCount];
-                    dataCount++;
-                }
-
-                //Console.WriteLine(MethodBase.GetCurrentMethod().Name + " idm(" + registerCardInfo[i].idm + ")");
-                //Console.WriteLine(MethodBase.GetCurrentMethod().Name + " name(" + registerCardInfo[i].name + ")");
-            }
-
             return registerCardInfo;
         }
 
+        internal string FindIdmFromRegisterCardInfo(string idm)
+        {
+            for (int i = 0; i < registerCardInfo.Length; i++)
+            {
+                if (registerCardInfo[i].idm == idm)
+                {
+                    Console.WriteLine("登録済データ " + registerCardInfo[i].name);
+                    return registerCardInfo[i].idm;
+                }
+            }
+
+            Console.WriteLine("非登録 " + idm);
+            throw new MemberListFileException("登録されていないデータを読み込みました");
+        }
     }
 }
