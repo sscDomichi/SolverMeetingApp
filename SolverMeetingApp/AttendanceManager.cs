@@ -19,8 +19,6 @@ namespace SolverMeetingApp
 
         internal void AttendanceManagerMain()
 		{
-            DataManager.RegisterCardInfo[] readData = dataManager.GetRegisterCardInfo();
-
             ReadTask readTask = new ReadTask();
             readTask.RegisterReadComplete(ReadComplete);
             readTask.ReadTaskMain();
@@ -34,6 +32,15 @@ namespace SolverMeetingApp
         internal void ReadComplete(ReadTask.ReadStatus status, string idm)
         {
             Console.WriteLine(MethodBase.GetCurrentMethod().Name + ", IDm(" + idm + ")");
+
+            DataManager.RegisterCardInfo[] readData = dataManager.GetRegisterCardInfo();
+            for ( int i = 0; i < readData.Length; i++)
+            {
+                if (readData[i].idm == idm)
+                {
+                    Console.WriteLine("登録済データ");
+                }
+            }
         }
     }
 }
