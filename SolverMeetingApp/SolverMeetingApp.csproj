@@ -71,6 +71,7 @@
       <DependentUpon>AttendanceControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="AttendanceManager.cs" />
+    <Compile Include="AttendanceStatus.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="data\Member.cs" />
     <Compile Include="DummyRead.cs" />
