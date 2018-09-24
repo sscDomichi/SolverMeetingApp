@@ -123,18 +123,19 @@ namespace SolverMeetingApp
         }
 
         /// <summary>
-        /// カード登録情報から指定したidmと一致するものを検索
+        /// 
         /// </summary>
         /// <param name="idm"></param>
         /// <returns></returns>
-        internal string FindIdmFromRegisterCardInfo(string idm)
+        internal AttendanceStatus.AttendanceStatusInfo UpdateAttendanceStatus(string idm)
         {
             for (int i = 0; i < registerCardInfo.Length; i++)
             {
                 if (registerCardInfo[i].idm == idm)
                 {
                     Console.WriteLine("登録済データ " + registerCardInfo[i].name);
-                    return registerCardInfo[i].idm;
+                    AttendanceStatus.AttendanceStatusInfo info = attendanceStatus.UpdateAttendanceStatus(registerCardInfo[i].name, AttendanceStatus.Status.ATTENDANCE);
+                    return info;
                 }
             }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SolverMeetingApp.data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -53,7 +54,7 @@ namespace SolverMeetingApp
             internal string remarksColumn { get; set; }
         }
 
-        internal List<AttendanceStatusInfo> attendanceStatusInfo = new List<AttendanceStatusInfo>();
+        internal List<AttendanceStatusInfo> attendanceStatusList = new List<AttendanceStatusInfo>();
 
         internal AttendanceStatus(List<string> names)
         {
@@ -65,8 +66,25 @@ namespace SolverMeetingApp
                 addData.arrivalTime = DateTime.MinValue;
                 addData.remarksColumn = "";
 
-                attendanceStatusInfo.Add(addData);
+                attendanceStatusList.Add(addData);
             }
+        }
+
+        internal AttendanceStatusInfo UpdateAttendanceStatus(string name, Status status)
+        {            
+            for (int i = 0; i < attendanceStatusList.Count; i++)
+            {
+                if (attendanceStatusList[i].name.Equals(name))
+                {
+                    AttendanceStatusInfo info = attendanceStatusList[i];
+                    info.status = status;
+                    attendanceStatusList[i] = info;
+                    return info;
+               }
+            }
+
+            Console.WriteLine("UpdateAttendanceStatus() " + name);
+            throw new MemberListFileException("更新対象のデータが存在しません");
         }
     }
 }

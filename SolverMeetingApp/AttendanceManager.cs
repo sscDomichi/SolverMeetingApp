@@ -55,10 +55,9 @@ namespace SolverMeetingApp
             try
             {
                 //Console.WriteLine(MethodBase.GetCurrentMethod().Name + ", IDm(" + idm + ")");
-
-                dataManager.FindIdmFromRegisterCardInfo(idm);
-				AttendanceStatusInfo info = new AttendanceStatusInfo();
-				ChangeStateNotify(info);//TODO:実際のAttendanceStatusを引数に変更する。
+                
+				AttendanceStatusInfo info = dataManager.UpdateAttendanceStatus(idm);
+				ChangeStateNotify(info);
 			}
             catch (MemberListFileException e)
             {
