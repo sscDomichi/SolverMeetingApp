@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Media;
+using static SolverMeetingApp.AttendanceStatus;
 using static SolverMeetingApp.ReadTask;
 
 namespace SolverMeetingApp
@@ -38,10 +40,47 @@ namespace SolverMeetingApp
 		/// 変更された情報をもとに、表示を変更する
 		/// </summary>
 		/// <param name="name"></param>
-		void ChangeStateNotify(string name)
+		void ChangeStateNotify(AttendanceStatusInfo status)
 		{
 			//表示を更新する
-			Console.WriteLine("ChangeStateNotify() name " + name);
+			Console.WriteLine("ChangeStateNotify() name:" + status.name);
+
+			UpdateAttendance(status);
+		}
+
+		/// <summary>
+		/// 出欠状態画面更新
+		/// </summary>
+		/// <param name="status"></param>
+		private void UpdateAttendance(AttendanceStatusInfo status)
+		{
+			foreach (AttendanceControl ctrl in AttendanceStackPanel.Children)
+			{
+				if (ctrl.NameText.Text.Equals(status.name))
+				{
+					switch (status.status)
+					{
+						case Status.ATTENDANCE:
+							ctrl.AttendanceButton.Background = Brushes.Green;
+							ctrl.AbsenceButton.Background = Brushes.Gray;
+							ctrl.TardyButton.Background = Brushes.Gray;
+							break;
+						case Status.ABSENCE:
+							ctrl.AttendanceButton.Background = Brushes.Gray;
+							ctrl.AbsenceButton.Background = Brushes.Green;
+							ctrl.TardyButton.Background = Brushes.Gray;
+							break;
+						case Status.ARRIVINGlLATE:
+							ctrl.AttendanceButton.Background = Brushes.Gray;
+							ctrl.AbsenceButton.Background = Brushes.Gray;
+							ctrl.TardyButton.Background = Brushes.Green;
+							break;
+						default:
+							throw new Exception("出勤ステータス異常");
+					}
+
+				}
+			}
 		}
 
 		/// <summary>
