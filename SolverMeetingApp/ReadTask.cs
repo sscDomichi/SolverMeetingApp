@@ -28,6 +28,12 @@ namespace SolverMeetingApp
         private const int oneSecond = 1000;
 
         /// <summary>
+        /// 最後に読み取ったidm
+        /// 複数回通知するのを防ぐため
+        /// </summary>
+        private string lastReadIdm = string.Empty;
+
+        /// <summary>
         /// 読み取り完了通知delegate登録
         /// </summary>
         /// <param name="status"></param>
@@ -86,8 +92,12 @@ namespace SolverMeetingApp
                             dataStr += idm[i].ToString("X2");
                         }
 
-                        ReadCompleteNotify(ReadStatus.COMPLETE, dataStr);
-                        //Console.WriteLine(MethodBase.GetCurrentMethod().Name + ", IDm(" + idm + ")");
+                        if (!lastReadIdm.Equals(dataStr))
+                        {
+                            lastReadIdm = dataStr;
+                            ReadCompleteNotify(ReadStatus.COMPLETE, dataStr);
+                            //Console.WriteLine(MethodBase.GetCurrentMethod().Name + ", IDm(" + idm + ")");
+                        }
                     }
                     catch
                     {
