@@ -11,7 +11,7 @@ namespace SolverMeetingApp
 {
     class DataManager
     {
-        readonly private string REGISTER_CARD_INFO_FILE_PATH = @".\data\REGISTER_CARD_INFO.txt";
+        readonly private string REGISTER_CARD_INFO_FILE_PATH = @".\data\REGISTER_CARD_INFO.csv";
 		private Member member = new Member();
 
         /// <summary>
